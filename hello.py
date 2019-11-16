@@ -13,7 +13,7 @@ myHeight = input()
 print ('So you are ' + str(float(myHeight)) + ' metres long')
 print ('do you want to know your height in inches?')
 answer = input()
-if answer == 'yes':
+if answer.upper() == 'YES':
     print ('your height in inches is ' + str(float(myHeight) / 0.0245) + ' inches')
 else:
     print ('That is okay, have a nice day')
