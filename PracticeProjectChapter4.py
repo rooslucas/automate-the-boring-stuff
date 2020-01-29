@@ -30,20 +30,24 @@ print(comma(spam))
 # Project 2: Coin Flip Streak
 
 randomlist = []
+numberOfSequenceHeads = 0
+numberOfSequenceTails = 0
 numberOfStreaks = 0
 
 for experimentNumber in range(10000):
-    number = random.randint(0,1)
-    if number == 0:
-        number = 'Heads'
-    elif number == 1:
-        number = 'Tails'
+    number = random.choice(['Heads','Tails'])
     randomlist.append(number)
-    patternDataHeads = ['Heads','Heads','Heads','Heads','Heads','Heads']
-    patternDataTails = ['Tails','Tails','Tails','Tails','Tails','Tails']
 for i in range(len(randomlist)):
-    if randomlist[i:i+len(patternDataHeads)]==patternDataHeads or randomlist[i:i+len(patternDataTails)]==patternDataTails:
-        numberOfStreaks +=1
+    if randomlist[i] == 'Heads':
+        numberOfSequenceTails = 0
+        numberOfSequenceHeads +=1
+        if numberOfSequenceHeads ==6:
+            numberOfStreaks +=1
+    elif randomlist[i] == 'Tails':
+        numberOfSequenceHeads = 0
+        numberOfSequenceTails += 1
+        if numberOfSequenceTails == 6:
+            numberOfStreaks +=1
 print(randomlist)
 print(numberOfStreaks)
 print('Chance of streak: %s%%' % (numberOfStreaks / 100))
