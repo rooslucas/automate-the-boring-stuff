@@ -32,7 +32,7 @@ print(comma(spam))
 randomlist = []
 numberOfStreaks = 0
 
-for experimentNumber in range(20):
+for experimentNumber in range(10000):
     number = random.randint(0,1)
     if number == 0:
         number = 'Heads'
