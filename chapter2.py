@@ -1,5 +1,4 @@
 #automate-the-boring-stuff chapter 2
-get_ipython().magic('reset -sf') #reset stuff
 
 import random
 import sys
@@ -53,7 +52,7 @@ while True:
     name = input()
     if name != 'Roos':
         continue
-    print 'Hello Roos, what is your password?'
+    print ('Hello Roos, what is your password?')
     password = input()
     if password == 'swordfish':
             break
@@ -78,7 +77,7 @@ for i in range(-5,1,1):
 total = 0
 for num in range(101):
     total = total + num
-print total
+print (total)
 
 print ('My name is')
 i = 0
