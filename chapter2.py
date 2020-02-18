@@ -66,7 +66,7 @@ while not name:
 print('How many guests will you have?')
 numOfGuests = int(input())
 if numOfGuests:
-    print ('Be sure to have enough room')
+    print('Be sure to have enough room')
 print('Done')
     
 #learning about for loops and range functions
