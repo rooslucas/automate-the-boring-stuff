@@ -93,7 +93,7 @@ allGuests = {'Cor': {'Chips': 20, 'Chocolat': 2}, 'Roos': {'Chips': 23,
 
 
 def totalBrought(guests, item):
-    numBrought: int = 0
+    numBrought = 0
     for k, v in guests.items():
         numBrought = numBrought + v.get(item, 0)
     return numBrought
