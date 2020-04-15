@@ -14,4 +14,18 @@ def displayInventory(inventory):
 
 displayInventory(stuff)
 
+# Practice project 3 List to Dictionary Function for Fantasy Game Inventory
 
+def addToInventory(inventory, added_items):
+    for item in added_items:
+       if item in inventory.keys():
+           inventory[item] += 1
+       else:
+           inventory[item] = 1
+
+
+inv = {'gold coin': 42, 'rope': 1}
+dragonLoot = ['gold coin', 'dagger', 'gold coin', 'gold coin', 'ruby']
+print(dragonLoot.count(item))
+addToInventory(inv, dragonLoot)
+displayInventory(inv)
