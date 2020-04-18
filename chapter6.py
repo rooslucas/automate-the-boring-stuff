@@ -1,3 +1,5 @@
+import pyperclip
+
 spam = "That is Alice's cat"
 spam2 = 'Say hi to Bob\'s mom.'
 print("Hello there!\nHow are you?\nI\'m doing fine.")
@@ -47,3 +49,30 @@ while True:
     if password.isalnum():
         break
     print('Password can only have letters and numbers.')
+spam3 = '''Dear Alice, 
+How have you been? I am fine.
+There is a container in the fridge
+that is labeled "Milk Experiment".
+
+Please do not drink it.
+Sincerely,
+Bob'''
+
+print(spam3)
+print(spam3.split('\n'))
+
+
+def printPicnic(itemsDict, leftWidth, rightWidth):
+    print('PICNIC ITEMS'.center(leftWidth + rightWidth, '-'))
+    for k, v in itemsDict.items():
+        print(k.ljust(leftWidth, '.') + str(v).rjust(rightWidth))
+
+
+picnicItems = {'sandwiches': 4, 'apples': 12, 'cups': 4, 'cookies': 8000}
+printPicnic(picnicItems, 12, 5)
+printPicnic(picnicItems, 20, 6)
+
+# Learning about the Pyperclip Module
+pyperclip.copy('Hello, world!')
+print(pyperclip.paste())
+
