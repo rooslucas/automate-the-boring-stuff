@@ -2,7 +2,7 @@ import sys
 import pyperclip
 
 #! python3
-# mclip.py - a Multi-clipboard program.
+# ChapterProject6.py - a Multi-clipboard program.
 # Project: Multi-Clipboard Automatic Messages
 
 TEXT = {'agree': """Yes, I agree. That sounds fine to me.""",
