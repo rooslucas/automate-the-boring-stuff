@@ -8,7 +8,7 @@ def displayInventory(inventory):
     item_total = 0
     for item_name, item_value in inventory.items():
         print(str(item_value) + ' ' + item_name)
-        item_total = item_total + item_value
+        item_total += item_value
     print('Total number of items: ' + str(item_total))
 
 
@@ -27,6 +27,5 @@ def addToInventory(inventory, added_items):
 
 inv = {'gold coin': 42, 'rope': 1}
 dragonLoot = ['gold coin', 'dagger', 'gold coin', 'gold coin', 'ruby']
-print(dragonLoot.count(item))
 addToInventory(inv, dragonLoot)
 displayInventory(inv)
