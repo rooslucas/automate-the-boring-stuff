@@ -2,7 +2,7 @@ import sys
 import pyperclip
 
 #! python3
-# ChapterProject6.py - a Multi-clipboard program.
+# chapter_project_6.py - a Multi-clipboard program.
 # Project: Multi-Clipboard Automatic Messages
 
 TEXT = {'agree': """Yes, I agree. That sounds fine to me.""",
@@ -10,7 +10,7 @@ TEXT = {'agree': """Yes, I agree. That sounds fine to me.""",
         'upsell': """Would you consider making this a monthly donation?"""}
 
 if len(sys.argv) < 2:
-    print('Usage: python ChapterProject6.py [keyphrase] - copy phrase text')
+    print('Usage: python chapter_project_6.py [keyphrase] - copy phrase text')
     sys.exit()
 
 keyphrase = sys.argv[1]  # first command line arg is the keyphrase
