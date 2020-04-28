@@ -74,3 +74,87 @@ print(bat_1.group())
 
 bat_2 = bat_gender_regex.search('The Adventures of Batwoman')
 print(bat_2.group())
+
+# Matching Zero or More with the Star
+
+bat_regex_star = re.compile(r'Bat(wo)*man')
+bat_3 = bat_regex_star.search('The Adventures of Batman')
+print(bat_3.group())
+
+bat_4 = bat_regex_star.search('The Adventures of Batwoman')
+print(bat_4.group())
+
+bat_5 = bat_regex_star.search('The Adventures of Batwowowowowoman')
+print(bat_5.group())
+
+# Matching One or More with the Plus
+bat_regex_plus = re.compile(r'Bat(wo)+man')
+bat_6 = bat_regex_plus.search('The Adventures of Batwoman')
+print(bat_6.group())
+
+bat_7 = bat_regex_plus.search('The Adventures of Batwowowowowoman')
+print(bat_7.group())
+
+bat_8 = bat_regex_plus.search('The Adventures of Batman')
+print(bat_8 == None)
+
+# Matching Specific Repetitions with Braces
+ha_regex = re.compile(r'(Ha){3}')  # or {1,3}
+ha_1 = ha_regex.search('HaHaHa')
+print(ha_1.group())
+
+ha_1 = ha_regex.search('Ha')
+print(ha_1 == None)
+
+# Greedy and Non-Greedy Matching
+# Longest one or the shortest one
+greedy_ha_regex = re.compile(r'(Ha){3,5}')
+greedy_ha_1 = greedy_ha_regex.search('HaHaHaHaHa')
+print(greedy_ha_1.group())
+
+non_greedy_ha_regex = re.compile(r'(Ha){3,5}?')
+non_greedy_ha_1 = non_greedy_ha_regex.search('HaHaHaHaHa')
+print(non_greedy_ha_1.group())
+
+# The Findall() Method
+phone_num_regex_3 = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+print(phone_num_regex_3.findall('Cell = 415-555-9999 Work = 212-555-0000'))
+
+# Making your own Character Classes
+vowel_regex = re.compile(r'[aeiouAEIOU]')
+print(vowel_regex.findall('RoboCop eats baby food. BABY FOOD'))
+
+consonant_regex = re.compile(r'[^aeiouAEIOU]')
+print(consonant_regex.findall('RoboCop eats baby food. BABY FOOD'))
+
+# The Caret(^) and Dollar($) Sign Characters
+# Beginning and End, combination causes whole string
+begins_with_hello = re.compile(r'^Hello')
+print(begins_with_hello.search('Hello, World!'))
+print(begins_with_hello.search('He said Hello.') == None)
+
+ends_with_number = re.compile(r'\d$')
+print(ends_with_number.search('Your number is 42'))
+print(ends_with_number.search('Your number is one') == None)
+
+whole_string_number = re.compile(r'^\d+$')
+print(whole_string_number.search('2174792'))
+print(whole_string_number.search('3883h332') == None)
+
+# The Wildcard Character
+at_regex = re.compile(r'.at')
+print(at_regex.findall('The cat in the hat sat on the flat mat with a bat.'))
+
+# Matching Everything with Dot-Star
+# It is always greedy, for non-greedy add a ?
+birthday_regex = re.compile(r'Birthday Date: (.*) Birthday month: (.*)')
+birthday = birthday_regex.search('Birthday Date: 17 Birthday month: January')
+print(birthday.group(1))
+print(birthday.group(2))
+
+# Matching Newlines with the Dot Character
+no_newline_regex = re.compile('.*')
+print(no_newline_regex.search('Serve the public.\nProtect the innocent.\nUphold the law').group())
+
+newline_regex = re.compile('.*', re.DOTALL)
+print(newline_regex.search('Serve the public.\nProtect the innocent.\nUphold the law').group())
