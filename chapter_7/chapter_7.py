@@ -158,3 +158,32 @@ print(no_newline_regex.search('Serve the public.\nProtect the innocent.\nUphold 
 
 newline_regex = re.compile('.*', re.DOTALL)
 print(newline_regex.search('Serve the public.\nProtect the innocent.\nUphold the law').group())
+
+# Case-Insensitive Matching
+robocop = re.compile(r'robocop', re.I)
+print(robocop.search('RoboCop is part man, part machine, all cop').group())
+print(robocop.search('ROBOCOP is part man, part machine, all cop').group())
+print(robocop.search('robocop is part man, part machine, all cop').group())
+
+# Substituting Strings with the sub() Method
+names_regex = re.compile(r'Agent \w+', re.I)
+print(names_regex.sub('CENSORED', 'Agent Mater gave the secret documents to Agent McQueen'))
+
+agent_names_regex = re.compile(r'Agent (\w)\w*')
+print(agent_names_regex.sub(r'\1*****', 'Agent Mater told Agent McQueen that Agent Sally knew Agent Doc was a double '
+                                        'agent.'))
+
+# Managing Complex Regexes
+phone_regex = re.compile(r'''(
+(\d{3}|\(\d{3}\))? # area code
+(\s|-|\.)? # seperator
+\d{3} # first 3 digits
+(\s|-|\.) # seperator
+\d{4} # last 4 digits
+(\s*(ext|x|ext.)\s*\d{2,5})? # extension
+)''', re.VERBOSE)
+
+# Combining ignorecase, dotall and verbose
+some_regex_value = re.compile('foo', re.IGNORECASE | re.DOTALL | re.VERBOSE)
+some = some_regex_value.search('Hey I am a foo')
+print(some.group())
