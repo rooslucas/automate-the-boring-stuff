@@ -79,7 +79,7 @@ print(pyperclip.paste())
 # English to Pig Latin
 print('Enter the English message to translate to Pig Latin *oink oink*:')
 message = input()
-pig_latin = [] # The list that wil contain Pig Latin words
+pig_latin = []  # The list that wil contain Pig Latin words
 vowels = ('a', 'e', 'i', 'o', 'u', 'y')
 
 for word in message.split():
@@ -102,7 +102,7 @@ for word in message.split():
     was_upper = word.isupper()
     was_title = word.istitle()
 
-    word = word.lower() # Useful for the translation
+    word = word.lower()  # Useful for the translation
 
     # Separate consonants at beginning of the word
     prefix_consonants = ''
@@ -127,4 +127,3 @@ for word in message.split():
 
 # Add everything together as a big oinking family
 print(' '.join(pig_latin))
-
