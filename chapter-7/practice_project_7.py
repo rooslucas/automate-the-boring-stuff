@@ -29,6 +29,7 @@ february = ['02']
 
 
 # Check if date is a valid date
+# Check the months with 30 days
 if month in short_months:
     if day in range(1, 31):
         if year in range(1000, 3000):
@@ -37,8 +38,10 @@ if month in short_months:
             print(f'The date {my_date} is not a valid date.')
     else:
         print(f'The date {my_date} is not a valid date.')
+
+# Check the month february
 elif month in february:
-    if year % 4 == 0 and not year % 100 == 0 and not year % 400 == 0:
+    if year % 4 == 0 and not year % 100 == 0:
         if day in range(1, 30):
             if year in range(1000, 3000):
                 print(f'The date {my_date} is a valid date.')
@@ -46,7 +49,7 @@ elif month in february:
                 print(f'The date {my_date} is not a valid date.')
         else:
             print(f'The date {my_date} is not a valid date.')
-    elif year % 4 != 0 and year % 100 == 0 and year % 400 == 0:
+    elif year % 4 != 0 and year % 100 == 0:
         if day in range(1, 29):
             if year in range(1000, 3000):
                 print(f'The date {my_date} is a valid date.')
@@ -56,6 +59,8 @@ elif month in february:
             print(f'The date {my_date} is not a valid date.')
     else:
         print(f'The date {my_date} is not a valid date.')
+
+# Check the months with 31 days
 elif month in long_months:
     if day in range(1, 32):
         if year in range(1000, 3000):
