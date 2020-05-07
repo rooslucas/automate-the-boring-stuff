@@ -36,7 +36,8 @@ if month in short_months:
 
 # Check the month february
 elif month in february:
-    if year % 4 == 0 and not year % 100 == 0:
+    is_leap_year = year % 4 == 0 and not year % 100 == 0
+    if is_leap_year:
         if day in range(1, 30):
             if year in range(1000, 3000):
                 print(f'The date {my_date} is a valid date.')
@@ -83,14 +84,18 @@ print("Enter your password:")
 my_password = input()
 
 # Run through the regexes
-if (length_regex.search(my_password) is not None) & (digit_regex.search(my_password) is not None) & (
-        lower_casing_regex.search(my_password) is not None) & (upper_casing_regex.search(my_password) is not None):
+long_enough = length_regex.search(my_password) is not None
+digit_included = digit_regex.search(my_password) is not None
+lower_case_included = lower_casing_regex.search(my_password) is not None
+upper_case_included = upper_casing_regex.search(my_password) is not None
+
+if long_enough and digit_included and lower_case_included and upper_case_included:
     print("You created a strong password.")
-elif length_regex.search(my_password) is None:
+elif not long_enough:
     print("The minimum number of characters is eight, otherwise your password isn't great...")
-elif digit_regex.search(my_password) is None:
+elif not digit_included:
     print("Babidiboo, you need a digit too...")
-elif (lower_casing_regex.search(my_password) is None) | (upper_casing_regex.search(my_password) is None):
+elif not lower_case_included or not upper_case_included:
     print("You need lower and upper, otherwise you ain't getting supper...")
 else:
     print("You failed so hard, please begin from the start...")
