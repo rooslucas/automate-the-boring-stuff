@@ -18,10 +18,6 @@ day = int(date_detection.search(my_date).group(2))
 month = date_detection.search(my_date).group(4)
 year = int(date_detection.search(my_date).group(6))
 
-print(day)
-print(month)
-print(year)
-
 # Create lists with months
 short_months = ['04', '06', '09', '11']
 long_months = ['01', '03', '05', '07', '08', '10', '12']
@@ -48,7 +44,7 @@ elif month in february:
                 print(f'The date {my_date} is not a valid date.')
         else:
             print(f'The date {my_date} is not a valid date.')
-    elif year % 4 != 0 and year % 100 == 0:
+    elif year % 4 != 0 or year % 100 == 0:
         if day in range(1, 29):
             if year in range(1000, 3000):
                 print(f'The date {my_date} is a valid date.')
