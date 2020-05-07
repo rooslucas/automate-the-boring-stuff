@@ -99,3 +99,13 @@ elif not lower_case_included or not upper_case_included:
     print("You need lower and upper, otherwise you ain't getting supper...")
 else:
     print("You failed so hard, please begin from the start...")
+
+# Shorter code but less fun
+# if not long_enough:
+#     print("The minimum number of characters is eight, otherwise your password isn't great...")
+# elif not digit_included:
+#     print("Babidiboo, you need a digit too...")
+# elif not lower_case_included or not upper_case_included:
+#     print("You need lower and upper, otherwise you ain't getting supper...")
+# else:
+#     print("You created a strong password.")
