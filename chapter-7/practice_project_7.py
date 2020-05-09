@@ -16,41 +16,42 @@ my_date = input()
 # Store date in variables
 day = int(date_detection.search(my_date).group(2))
 month = date_detection.search(my_date).group(4)
-year = int(date_detection.search(my_date).group(6))
+year_number = int(date_detection.search(my_date).group(6))
 
 # Create lists with months
 short_months = ['04', '06', '09', '11']
 long_months = ['01', '03', '05', '07', '08', '10', '12']
 february = ['02']
 
+
+# Write a function to check for a valid year
+def year_check(year):
+    if year in range(1000, 3000):
+        print(f'The date {my_date} is a valid date.')
+    else:
+        print(f'The date {my_date} is not a valid date.')
+
+
 # Check if date is a valid date
 # Check the months with 30 days
 if month in short_months:
     if day in range(1, 31):
-        if year in range(1000, 3000):
-            print(f'The date {my_date} is a valid date.')
-        else:
-            print(f'The date {my_date} is not a valid date.')
+        year_check(year_number)
     else:
         print(f'The date {my_date} is not a valid date.')
 
 # Check the month february
 elif month in february:
-    is_leap_year = year % 4 == 0 and not year % 100 == 0
+    is_leap_year = year_number % 4 == 0 and not year_number % 100 == 0
+    is_not_leap_year = year_number % 4 != 0 or year_number % 100 == 0
     if is_leap_year:
         if day in range(1, 30):
-            if year in range(1000, 3000):
-                print(f'The date {my_date} is a valid date.')
-            else:
-                print(f'The date {my_date} is not a valid date.')
+            year_check(year_number)
         else:
             print(f'The date {my_date} is not a valid date.')
-    elif year % 4 != 0 or year % 100 == 0:
+    elif is_not_leap_year:
         if day in range(1, 29):
-            if year in range(1000, 3000):
-                print(f'The date {my_date} is a valid date.')
-            else:
-                print(f'The date {my_date} is not a valid date.')
+            year_check(year_number)
         else:
             print(f'The date {my_date} is not a valid date.')
     else:
@@ -59,10 +60,7 @@ elif month in february:
 # Check the months with 31 days
 elif month in long_months:
     if day in range(1, 32):
-        if year in range(1000, 3000):
-            print(f'The date {my_date} is a valid date.')
-        else:
-            print(f'The date {my_date} is not a valid date.')
+        year_check(year_number)
     else:
         print(f'The date {my_date} is not a valid date.')
 else:
