@@ -2,7 +2,6 @@
 # import as ... makes the typing shorter
 import pyinputplus as pyip
 
-
 while True:
     print('Enter your age:')
     age = input()
@@ -48,7 +47,8 @@ response_12 = pyip.inputNum(blockRegexes=[r'[02468]$'])
 
 response_13 = pyip.inputStr(allowRegexes=[r'caterpillar', 'category'], blockRegexes=[r'cat'])
 
-Passing a Custom Validation Function to inputCustom()
+
+# Passing a Custom Validation Function to inputCustom()
 def adds_up_to_ten(numbers):
     numbers_list = list(numbers)
     for i, digit in enumerate(numbers_list):
