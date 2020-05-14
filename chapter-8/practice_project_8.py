@@ -38,10 +38,12 @@ else:
 number = pyip.inputInt('How many sandwiches do you want?\n')
 price = price * number
 
+
 # Write function to display order
 def display_order(order):
     for type, answer in order.items():
         print(type + ': ' + str(answer))
+
 
 order = {'number of sandwiches': number, 'bread': bread_type, 'protein': protein_type, 'cheese': cheese_type, 'topping': toppings_type}
 print('Is this your order?')
