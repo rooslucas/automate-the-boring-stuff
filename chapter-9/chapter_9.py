@@ -17,7 +17,7 @@ Path('spam') / Path('bacon', 'eggs')
 
 home_folder = r'/Users/Rosalie'
 sub_folder = 'spam'
-home_folder + '\\' + sub_folder
+total_folder = home_folder + '\\' + sub_folder
 '\\'.join([home_folder, sub_folder])
 
 home_folder_2 = Path('/Users/Rosalie')
@@ -65,3 +65,36 @@ p.name  # 'haha.txt'
 p.stem  # 'haha'
 p.suffix  # 'txt'
 p.drive  # ''
+
+Path.cwd()  # PosixPath('/Users/rosalie/Developer/automate-the-boring-stuff')
+Path.cwd().parents[0]  # PosixPath('/Users/rosalie/Developer')
+Path.cwd().parents[1]  # PosixPath('/Users/rosalie')
+Path.cwd().parents[2]  # PosixPath('/Users')
+Path.cwd().parents[3]  # PosixPath('/')
+
+calc_file_path = 'C:\\Windows\\System32\\calc.exe'
+os.path.basename(calc_file_path)  # 'calc.exe'
+os.path.dirname(calc_file_path)  # 'C:\\Windows\\System32'
+os.path.split(calc_file_path)  # 'C:\\Windows\\System32', 'calc.exe'
+
+'/usr/bin'.split(os. sep)  # ['', 'usr', 'bin']
+
+# Finding File Sizes and Folder Contents
+os.path.getsize(calc_file_path)  # size of bytes of your path
+os.listdir(calc_file_path)  # return a list of filename strings for each file in path
+
+total_size = 0
+for filename in os.listdir('C:\\Windows\\System32'):
+    total_size = total_size + os.path.getsize(os.path.join('C:\\Windows\\System32', filename))
+    print(total_size)
+# 2559970473
+
+# Modifying a List of Files Using Glob Patterns
+p = Path('/Users/Rosalie/Developer')
+p.glob('*')
+list(p.glob('*'))
+list(p.glob('*.txt'))
+list(p.glob('project?.docx'))
+list(p.glob('*.?x?'))
+
+# You can use this method to get pathways for different text files
