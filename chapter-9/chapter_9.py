@@ -2,6 +2,8 @@
 # imports through the chapter
 from pathlib import Path
 import os
+import shelve
+import pprint
 
 # The forward slash
 Path('bacon', 'eggs', 'ham')
@@ -77,7 +79,7 @@ os.path.basename(calc_file_path)  # 'calc.exe'
 os.path.dirname(calc_file_path)  # 'C:\\Windows\\System32'
 os.path.split(calc_file_path)  # 'C:\\Windows\\System32', 'calc.exe'
 
-'/usr/bin'.split(os. sep)  # ['', 'usr', 'bin']
+'/usr/bin'.split(os.sep)  # ['', 'usr', 'bin']
 
 # Finding File Sizes and Folder Contents
 os.path.getsize(calc_file_path)  # size of bytes of your path
@@ -97,4 +99,75 @@ list(p.glob('*.txt'))
 list(p.glob('project?.docx'))
 list(p.glob('*.?x?'))
 
+for text_file_path_obj in p.glob('*.txt'):
+    print(text_file_path_obj)
+
 # You can use this method to get pathways for different text files
+
+# Checking Path Validity
+win_dir = Path('/Users/rosalie')
+not_exists_dir = Path('/Users/rosalie/This/Folder/Does/Not/Exist')
+calc_file = Path('/Users/rosalie/Developer/automate-the-boring-stuff/chapter-9/chapter_9.py')
+
+win_dir.exists()  # True
+win_dir.is_dir()  # True
+not_exists_dir.exists()  # False
+calc_file.is_file()  # True
+calc_file.isdir()  # False
+
+# The File Reading/Writing Process
+binary = Path('spam.txt')
+binary.write_text('Hello, world!')  # 13 characters
+binary.read_text()  # 'Hello, world!'
+
+# Opening Files with the open() Function
+hello_file = open(Path.home()/'hello.rtf')
+hello_file = open('/Users/rosalie/hello.rtf')
+
+# Reading the Contents of Files
+hello_content = hello_file.read()
+print(hello_content)  # 'Hello, World!'
+
+sonnet_file = open(Path.home() / 'sonnet29.txt')
+sonnet_file.readlines()
+
+# Writing to Files
+bacon_file = open('bacon.txt', 'w')
+bacon_file.write('Hello, world!\n')  # 14
+bacon_file.close()
+
+bacon_file = open('bacon.txt', 'a')
+bacon_file.write('Bacon is not a vegetable')  # 24
+bacon_file.close()
+
+bacon_file = open('bacon.txt')
+content = bacon_file.read()
+bacon_file.close()
+print(content)
+
+# Saving Variables with the shelve Module
+shelf_file = shelve.open('mydata')
+cats = ['Zophia', 'Pooka', 'Simon']
+shelf_file['cats'] = cats
+shelf_file.close()
+
+shelf_file = shelve.open('mydata')
+type(shelf_file)  # <class 'shelve.DbfilenameShelf'>
+shelf_file['cats']  # ['Zophia', 'Pooka', 'Simon']
+
+shelf_file = shelve.open('mydata')
+list(shelf_file.keys())  # ['cats']
+list(shelf_file.values())  # [['Zophia', 'Pooka', 'Simon']]
+shelf_file.close()
+
+# Saving Variables with the pprint.pformat() Function
+cats = [{'name': 'Zophie', 'desc': 'chubby'}, {'name': 'Pooka', 'desc': 'fluffy'}]
+pprint.pformat(cats)  # [{'desc': 'chubby', 'name': 'Zophie'}, {'desc': 'fluffy', 'name': 'Pooka'}]"
+file_object = open('my_cats.py', 'w')
+file_object.write('cats = ' + pprint.pformat(cats) + '\n')  # 83
+file_object.close()
+
+import my_cats
+my_cats.cats  # [{'desc': 'chubby', 'name': 'Zophie'}, {'desc': 'fluffy', 'name': 'Pooka'}]
+my_cats.cats[0]  # {'desc': 'chubby', 'name': 'Zophie'}
+my_cats.cats[0]['name']  # 'Zophie'
