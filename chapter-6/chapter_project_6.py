@@ -1,7 +1,7 @@
 import sys
 import pyperclip
 
-#! python3
+# ! python3
 # chapter_project_6.py - a Multi-clipboard program.
 # Project: Multi-Clipboard Automatic Messages
 
