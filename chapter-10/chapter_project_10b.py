@@ -9,7 +9,7 @@ import os
 def backup_to_zip(folder):
     # Back up the entire contents of "folder" into a ZIP file.
 
-    folder = os.path, abspath(folder)  # make sure folder is absolute
+    folder = os.path.abspath(folder)  # make sure folder is absolute
 
     # Figure out the filename this code should use based on what files already exist.
     number = 1

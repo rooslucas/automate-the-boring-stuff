@@ -4,7 +4,6 @@
 # American-style dates: MM/DD/YYYY
 # European-style dates: DD/MM/YYYY
 
-import shutil
 import os
 import re
 
@@ -22,7 +21,7 @@ for amer_filename in os.listdir('.'):
     mo = date_pattern.search(amer_filename)
 
     # Skip files without a date
-    if mo == None:
+    if mo is None:
         continue
 
     # Get the different parts of the filename.
@@ -38,7 +37,7 @@ for amer_filename in os.listdir('.'):
 
     # Get the full, absolute file paths.
     abs_working_dir = os.path.abspath('.')
-    amer_filename  = os.path.join(abs_working_dir, amer_filename)
+    amer_filename = os.path.join(abs_working_dir, amer_filename)
     euro_filename = os.path.join(abs_working_dir, euro_filename)
 
     # Rename the files.
