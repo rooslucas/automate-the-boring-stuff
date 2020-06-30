@@ -4,11 +4,12 @@
 import zipfile
 import os
 
+
 # Step 1: Figure Out the ZIP File's Name
 def backup_to_zip(folder):
     # Back up the entire contents of "folder" into a ZIP file.
 
-    folder = os.path,abspath(folder)  # make sure folder is absolute
+    folder = os.path, abspath(folder)  # make sure folder is absolute
 
     # Figure out the filename this code should use based on what files already exist.
     number = 1
@@ -23,11 +24,15 @@ def backup_to_zip(folder):
     backup_zip = zipfile.ZipFile(zip_filename, 'w')
 
     # Step 3: Walk the entire folder tree and compress the files in each folder
-    for filename in filenames:
-        new_base = os.path.basename(folder) + '_'
-        if filename.startswith(new_base) and filename.endswith('.zip'):
-            continue
-        backup_zip.close()
+    for foldername, subfolders, filenames in os.walk(folder):
+        print(f'Adding files in {foldername}...')
+        backup_zip.write(foldername)
+
+        for filename in filenames:
+            new_base = os.path.basename(folder) + '_'
+            if filename.startswith(new_base) and filename.endswith('.zip'):
+                continue
+    backup_zip.close()
     print('Done.')
 
 
