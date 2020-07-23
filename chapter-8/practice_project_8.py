@@ -1,7 +1,6 @@
 # Practice projects of chapter 8
 # Import important shizzle
 import pyinputplus as pyip
-import time
 
 # Practice project 1: Sandwich maker
 price = 0
@@ -45,7 +44,8 @@ def display_order(order):
         print(type + ': ' + str(answer))
 
 
-order = {'number of sandwiches': number, 'bread': bread_type, 'protein': protein_type, 'cheese': cheese_type, 'topping': toppings_type}
+order = {'number of sandwiches': number, 'bread': bread_type, 'protein': protein_type, 'cheese': cheese_type, 'topping':
+        toppings_type}
 print('Is this your order?')
 display_order(order)
 pyip.inputYesNo()
